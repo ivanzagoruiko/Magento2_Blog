@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="mag_blog_page_post" resource="default" engine="innodb" comment="Mag Blog Post Table">
+        <column xsi:type="smallint" name="post_id" padding="6" unsigned="false" nullable="false" identity="true"
+                comment="Entity ID"/>
+
+        <column xsi:type="smallint" name="page_id" padding="6" unsigned="false" nullable="false" identity="false"
+                comment="Entity ID"/>
+
+        <column xsi:type="smallint" name="is_post" padding="6" unsigned="false" nullable="false" identity="false"
+                default="1" comment="Is Post"/>
+
+        <column xsi:type="timestamp" name="publish_date" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Publish Data"/>
+
+        <column xsi:type="varchar" name="author" nullable="false" length="255" comment="Post Author"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="post_id"/>
+            <column name="page_id"/>
+        </constraint>
+
+        <constraint xsi:type="foreign" referenceId="MAG_BLOG_PAGE_POST_PAGE_ID_CMS_PAGE_PAGE_ID" table="mag_blog_page_post"
+                    column="page_id" referenceTable="cms_page" referenceColumn="page_id" onDelete="CASCADE"/>
+        <index referenceId="MAG_BLOG_PAGE_POST_PAGE_ID" indexType="btree">
+            <column name="page_id"/>
+        </index>
+    </table>
+</schema>

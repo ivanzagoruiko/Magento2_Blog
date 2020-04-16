@@ -1,0 +1,18 @@
+{
+    "mag_blog_page_post": {
+        "column": {
+            "post_id": true,
+            "page_id": true,
+            "is_post": true,
+            "publish_date": true,
+            "author": true
+        },
+        "index": {
+            "MAG_BLOG_PAGE_POST_PAGE_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "MAG_BLOG_PAGE_POST_PAGE_ID_CMS_PAGE_PAGE_ID": true
+        }
+    }
+}
